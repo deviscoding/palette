@@ -1,0 +1,120 @@
+@import "variables";
+@import "functions";
+
+@mixin palette-hover-focus {
+  @if $enable-bootstrap-class and mixin-exists(hover-focus) {
+    @include hover-focus {
+      @content;
+    }
+  } @else {
+    &:focus,
+    &:hover {
+      @content;
+    }
+  }
+}
+
+// Generates the background utility classes for the given name and color value.
+//
+// @param {String} The selector to use.
+// @param {Color}  The color value to assign to the background.
+@mixin bg-palette-variant($class, $color-value) {
+  @if $enable-bootstrap-class and mixin-exists(bg-variant) {
+    // Use the Bootstrap Mixin if Possible
+    @include bg-variant($class,$color-value);
+  } @else {
+    // Otherwise we use our own output
+    #{$class} {
+      background-color: $color-value !important;
+    }
+    a#{$class} {
+      @include palette-hover-focus {
+        background-color: darken($color-value, 10%) !important;
+      }
+    }
+  }
+}
+
+// Generates the text color utility classes for the given name and color value.
+//
+// @param {String} The selector to use.
+// @param {Color}  The color value to assign to the text.
+@mixin text-emphasis-palette-variant($class, $color-value) {
+  @if $enable-bootstrap-class and mixin-exists(text-emphasis-variant) {
+    // Use the Bootstrap Mixin if Possible
+    @include text-emphasis-variant($class,$color-value);
+  } @else {
+    // Otherwise we use our own output
+    #{$class} {
+      color: $color-value !important;
+    }
+    a#{$class} {
+      @include palette-hover-focus {
+        color: darken($color-value, 10%) !important;
+      }
+    }
+  }
+}
+
+// Generates text color utility classes for all of color weights given in the export list.
+//
+// @param {Map}  $export The list of palettes to export text colors for.
+@mixin text-color-utils($export: $palette-export) {
+  @each $palette, $v in $export {
+    @if type-of($v) == "list" {
+      @each $weight in $v {
+        $color-value: get-color($palette, $weight);
+        $text-class:  get-text-class($palette, $weight);
+
+        @include text-emphasis-palette-variant($text-class, $color-value);
+      }
+    } @else {
+      $color-value: get-color($palette, $v);
+      $text-class:  get-text-class($palette);
+
+      @include text-emphasis-palette-variant($text-class, $color-value);
+    }
+  }
+}
+
+// Generates background color utility classes for all color weights the given export list.
+//
+// @param {Map}  $export The list of palettes to export text colors for.
+@mixin bg-color-utils($export: $palette-export) {
+  @each $palette, $v in $export {
+    @if type-of($v) == "list" {
+      @each $weight in $v {
+        $color-value: get-color($palette, $weight);
+        $bg-class:   get-bg-class($palette, $weight);
+
+        @include bg-palette-variant($bg-class, $color-value);
+      }
+    } @else {
+      $color-value: get-color($palette, $v);
+      $bg-class:    get-bg-class($palette);
+
+      @include bg-palette-variant($bg-class, $color-value);
+    }
+  }
+}
+
+// Generates css custom properties for all color weights the given export list.
+//
+// @param {Map}  $export The list of palettes to export text colors for.
+@mixin root-color-utils($export: $palette-export) {
+  @each $palette, $v in $export {
+    @if type-of($v) == "list" {
+      @each $weight in $v {
+        $color-value: get-color($palette, $weight);
+        $property: #{$palette}-#{$weight};
+
+        --#{$property}: #{$color-value};
+      }
+    } @else {
+      $color-value: get-color($palette, $v);
+      $property:    #{$palette};
+
+      --#{$property}: #{$color-value};
+    }
+  }
+}

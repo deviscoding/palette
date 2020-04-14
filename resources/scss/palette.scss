@@ -1,0 +1,17 @@
+@import "functions";
+@import "variables";
+@import "mixins";
+
+/*!
+ * deviscoding palettes v1.0 (http://github.com/deviscoding/palette)
+ * Licensed under MIT (https://github.com/deviscoding/palette/blob/master/LICENSE)
+ * MDC Color Values Licensed under MIT; Copyright (c) 2014-2020 Google, Inc.
+ */
+@if $enable-custom-properties {
+  :root {
+    @include root-color-utils();
+  }
+}
+
+@include text-color-utils();
+@include bg-color-utils();

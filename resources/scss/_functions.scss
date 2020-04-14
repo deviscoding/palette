@@ -1,0 +1,172 @@
+/// Transforms a string into PascalCase
+///
+/// @credit Eduardo Boucas (@eduardoboucas)
+///
+/// @param  {String} $input The string to transform
+///
+/// @return {String}        The transformed string
+///
+@function to-pascal-case($input) {
+  $str:     '';
+  $capital: true;
+  $hyphen:  false;
+
+  @for $i from 1 through str-length($input) {
+    $char: str-slice($input, $i, $i);
+
+    @if $char != '-' {
+      $str: $str + if($capital, to-upper-case($char), $char);
+
+      $capital: false;
+      $hyphen: false;
+    } @else {
+      // Allowing double hyphen for BEM syntax
+      @if $hyphen {
+        $str: $str + '--';
+        $hyphen: false;
+      } @else {
+        $hyphen: true;
+      }
+
+      $capital: true;
+    }
+  }
+
+  @return $str;
+}
+
+@function get-bg-class($color, $weight: '' ) {
+
+  $pascal:       to-pascal-case($color);
+  $m-class:      ".-bg#{$pascal}#{$weight}";
+  $bc-class:     if($weight != '', ".bg-#{$color}-#{$weight}", ".bg-#{$color}");
+  $class:        '';
+
+  @if $enable-bootstrap-class and $enable-modifier-class {
+    $class: #{unquote($m-class)}, #{unquote($bc-class)};
+  } @else if $enable-bootstrap-class {
+    $class: #{unquote($bc-class)};
+  } @else if $enable-modifier-class {
+    $class: #{unquote($m-class)};
+  }
+
+  @return $class;
+}
+
+@function get-text-class($color, $weight: '' ) {
+
+  $pascal:       to-pascal-case($color);
+  $m-class:      ".-text#{$pascal}#{$weight}";
+  $bc-class:     if($weight != '', ".text-#{$color}-#{$weight}", ".text-#{$color}");
+  $class:        '';
+
+  @if $enable-bootstrap-class and $enable-modifier-class {
+    $class: #{unquote($m-class)}, #{unquote($bc-class)};
+  } @else if $enable-bootstrap-class {
+    $class: #{unquote($bc-class)};
+  } @else if $enable-modifier-class {
+    $class: #{unquote($m-class)};
+  }
+
+  @return $class;
+}
+
+@function get-color($color,$weight) {
+    $p: quote($color);
+    $w: quote($weight);
+
+    @if(variable-exists(palettes)) {
+      @if(map-has-key($palettes, $p)) {
+        $palette: map-get($palettes, $p);
+        @if(map-has-key($palette, $w )) {
+          @return map-get($palette, $w);
+        } @else {
+          @error "The #{$p} key of the $palettes variable does not contain the weight #{$w}";
+        }
+      } @else {
+        @error "The $palettes variable does not contain a #{$p} key.";
+      }
+    } @else {
+      @error "The $palettes variable does not exist.";
+    }
+
+    @return null;
+}
+
+// region //////////////////////////////////////////////// Convenience Getter Functions
+
+@function get-gray($weight: 0) {
+  @return get-color("gray", $weight);
+}
+
+@function get-blue-gray($weight: 0) {
+  @return get-color("blue-gray", $weight);
+}
+
+@function get-red($weight: 0) {
+  @return get-color("red", $weight);
+}
+
+@function get-pink($weight: 0) {
+  @return get-color("pink", $weight);
+}
+
+@function get-purple($weight: 0) {
+  @return get-color("purple", $weight);
+}
+
+@function get-deep-purple($weight: 0) {
+  @return get-color("deep-purple", $weight);
+}
+
+@function get-indigo($weight: 0) {
+  @return get-color("indigo", $weight);
+}
+
+@function get-blue($weight: 0) {
+  @return get-color("blue", $weight);
+}
+
+@function get-light-blue($weight: 0) {
+  @return get-color("light-blue", $weight);
+}
+
+@function get-cyan($weight: 0) {
+  @return get-color("cyan", $weight);
+}
+
+@function get-teal($weight: 0) {
+  @return get-color("teal", $weight);
+}
+
+@function get-green($weight: 0) {
+  @return get-color("green", $weight);
+}
+
+@function get-light-green($weight: 0) {
+  @return get-color("light-green", $weight);
+}
+
+@function get-lime($weight: 0) {
+  @return get-color("lime", $weight);
+}
+
+@function get-yellow($weight: 0) {
+  @return get-color("yellow", $weight);
+}
+
+@function get-amber($weight: 0) {
+  @return get-color("amber", $weight);
+}
+
+@function get-orange($weight: 0) {
+  @return get-color("orange", $weight);
+}
+
+@function get-deep-orange($weight: 0) {
+  @return get-color("deep-orange", $weight);
+}
+
+@function get-brown($weight: 0) {
+  @return get-color("brown", $weight);
+}
