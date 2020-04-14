@@ -1,0 +1,11 @@
+pleasing:
+  assets:
+    palette_css:
+      inputs: 
+        - "resources/scss/palette.scss"
+      output: "dist/css/palette.css"
+    palette_css_min:
+      filters: ['minify']
+      inputs: 
+        - "resources/scss/palette.scss"
+      output: "dist/css/palette.min.css"
