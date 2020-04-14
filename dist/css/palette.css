@@ -1,0 +1,245 @@
+/*!
+ * deviscoding palettes v1.0 (http://github.com/deviscoding/palette)
+ * Licensed under MIT (https://github.com/deviscoding/palette/blob/master/LICENSE)
+ * MDC Color Values Licensed under MIT; Copyright (c) 2014-2020 Google, Inc.
+ */
+:root {
+  --blue: #0092cf;
+  --gray-50: #fafafa;
+  --gray-100: #f5f5f5;
+  --gray-200: #eeeeee;
+  --gray-300: #e0e0e0;
+  --gray-400: #bdbdbd;
+  --gray-500: #9e9e9e;
+  --gray-600: #757575;
+  --gray-700: #616161;
+  --gray-800: #424242;
+  --gray-900: #212121;
+  --red: #d32f2f;
+  --green: #388e3c;
+  --yellow: #fbc02d;
+}
+
+.-textBlue {
+  color: #0092cf !important;
+}
+
+a.-textBlue:focus, a.-textBlue:hover {
+  color: #006e9c !important;
+}
+
+.-textGray50 {
+  color: #fafafa !important;
+}
+
+a.-textGray50:focus, a.-textGray50:hover {
+  color: #e1e1e1 !important;
+}
+
+.-textGray100 {
+  color: #f5f5f5 !important;
+}
+
+a.-textGray100:focus, a.-textGray100:hover {
+  color: gainsboro !important;
+}
+
+.-textGray200 {
+  color: #eeeeee !important;
+}
+
+a.-textGray200:focus, a.-textGray200:hover {
+  color: #d5d5d5 !important;
+}
+
+.-textGray300 {
+  color: #e0e0e0 !important;
+}
+
+a.-textGray300:focus, a.-textGray300:hover {
+  color: #c7c7c7 !important;
+}
+
+.-textGray400 {
+  color: #bdbdbd !important;
+}
+
+a.-textGray400:focus, a.-textGray400:hover {
+  color: #a4a4a4 !important;
+}
+
+.-textGray500 {
+  color: #9e9e9e !important;
+}
+
+a.-textGray500:focus, a.-textGray500:hover {
+  color: #858585 !important;
+}
+
+.-textGray600 {
+  color: #757575 !important;
+}
+
+a.-textGray600:focus, a.-textGray600:hover {
+  color: #5c5c5c !important;
+}
+
+.-textGray700 {
+  color: #616161 !important;
+}
+
+a.-textGray700:focus, a.-textGray700:hover {
+  color: #484848 !important;
+}
+
+.-textGray800 {
+  color: #424242 !important;
+}
+
+a.-textGray800:focus, a.-textGray800:hover {
+  color: #292929 !important;
+}
+
+.-textGray900 {
+  color: #212121 !important;
+}
+
+a.-textGray900:focus, a.-textGray900:hover {
+  color: #080808 !important;
+}
+
+.-textRed {
+  color: #d32f2f !important;
+}
+
+a.-textRed:focus, a.-textRed:hover {
+  color: #ab2424 !important;
+}
+
+.-textGreen {
+  color: #388e3c !important;
+}
+
+a.-textGreen:focus, a.-textGreen:hover {
+  color: #2a692d !important;
+}
+
+.-textYellow {
+  color: #fbc02d !important;
+}
+
+a.-textYellow:focus, a.-textYellow:hover {
+  color: #f0ad05 !important;
+}
+
+.-bgBlue {
+  background-color: #0092cf !important;
+}
+
+a.-bgBlue:focus, a.-bgBlue:hover {
+  background-color: #006e9c !important;
+}
+
+.-bgGray50 {
+  background-color: #fafafa !important;
+}
+
+a.-bgGray50:focus, a.-bgGray50:hover {
+  background-color: #e1e1e1 !important;
+}
+
+.-bgGray100 {
+  background-color: #f5f5f5 !important;
+}
+
+a.-bgGray100:focus, a.-bgGray100:hover {
+  background-color: gainsboro !important;
+}
+
+.-bgGray200 {
+  background-color: #eeeeee !important;
+}
+
+a.-bgGray200:focus, a.-bgGray200:hover {
+  background-color: #d5d5d5 !important;
+}
+
+.-bgGray300 {
+  background-color: #e0e0e0 !important;
+}
+
+a.-bgGray300:focus, a.-bgGray300:hover {
+  background-color: #c7c7c7 !important;
+}
+
+.-bgGray400 {
+  background-color: #bdbdbd !important;
+}
+
+a.-bgGray400:focus, a.-bgGray400:hover {
+  background-color: #a4a4a4 !important;
+}
+
+.-bgGray500 {
+  background-color: #9e9e9e !important;
+}
+
+a.-bgGray500:focus, a.-bgGray500:hover {
+  background-color: #858585 !important;
+}
+
+.-bgGray600 {
+  background-color: #757575 !important;
+}
+
+a.-bgGray600:focus, a.-bgGray600:hover {
+  background-color: #5c5c5c !important;
+}
+
+.-bgGray700 {
+  background-color: #616161 !important;
+}
+
+a.-bgGray700:focus, a.-bgGray700:hover {
+  background-color: #484848 !important;
+}
+
+.-bgGray800 {
+  background-color: #424242 !important;
+}
+
+a.-bgGray800:focus, a.-bgGray800:hover {
+  background-color: #292929 !important;
+}
+
+.-bgGray900 {
+  background-color: #212121 !important;
+}
+
+a.-bgGray900:focus, a.-bgGray900:hover {
+  background-color: #080808 !important;
+}
+
+.-bgRed {
+  background-color: #d32f2f !important;
+}
+
+a.-bgRed:focus, a.-bgRed:hover {
+  background-color: #ab2424 !important;
+}
+
+.-bgGreen {
+  background-color: #388e3c !important;
+}
+
+a.-bgGreen:focus, a.-bgGreen:hover {
+  background-color: #2a692d !important;
+}
+
+.-bgYellow {
+  background-color: #fbc02d !important;
+}
+
+a.-bgYellow:focus, a.-bgYellow:hover {
+  background-color: #f0ad05 !important;
+}
