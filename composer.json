@@ -1,0 +1,13 @@
+{
+    "name": "deviscoding/palette",
+    "description": "SASS and CSS utilities for the Material Design color palette.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AMJones",
+            "email": "aaron@jonesiscoding.com"
+        }
+    ],
+    "require": {}
+}
