@@ -72,25 +72,33 @@
 }
 
 @function get-color($color,$weight) {
-    $p: quote($color);
-    $w: quote($weight);
+  @if type-of($color) == "color" {
+    @return $color;
+  }
 
-    @if(variable-exists(palettes)) {
-      @if(map-has-key($palettes, $p)) {
-        $palette: map-get($palettes, $p);
-        @if(map-has-key($palette, $w )) {
-          @return map-get($palette, $w);
-        } @else {
-          @error "The #{$p} key of the $palettes variable does not contain the weight #{$w}";
-        }
+  @if type-of($weight) == "number" {
+    $weight: inspect($weight);
+  }
+
+  $p: quote($color);
+  $w: quote($weight);
+
+  @if(variable-exists(palettes)) {
+    @if(map-has-key($palettes, $p)) {
+      $palette: map-get($palettes, $p);
+      @if(map-has-key($palette, $w )) {
+        @return map-get($palette, $w);
       } @else {
-        @error "The $palettes variable does not contain a #{$p} key.";
+        @error "The #{$p} key of the $palettes variable does not contain the weight #{$w}";
       }
     } @else {
-      @error "The $palettes variable does not exist.";
+      @error "The $palettes variable does not contain a #{$p} key.";
     }
+  } @else {
+    @error "The $palettes variable does not exist.";
+  }
 
-    @return null;
+  @return null;
 }
 
 // region //////////////////////////////////////////////// Convenience Getter Functions
